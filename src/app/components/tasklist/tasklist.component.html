@@ -1,1 +1,5 @@
-<p>tasklist works!</p>
+<!-- task-list.component.html -->
+<h2>Lista de Tarefas</h2>
+<div *ngFor="let task of tasks">
+  <app-task-item [task]="task" (taskDeleted)="deleteTask($event)"></app-task-item>
+</div>

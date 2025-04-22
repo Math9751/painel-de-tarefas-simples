@@ -1,0 +1,11 @@
+<!-- taskitem.component.html -->
+<div class="task-item">
+  <h3>{{ task.titulo }}</h3>
+  <p>{{ task.descricao }}</p>
+  <p>Status: {{ task.status }}</p>
+  <p *ngIf="task.prazo">Data de Entrega: {{ task.prazo | date:'dd/MM/yyyy' }}</p>
+  <div *ngFor="let subtask of task.subtarefas">
+    <input type="checkbox" [checked]="subtask.completo"> {{ subtask.descricao }}
+  </div>
+  <button (click)="deleteTask()">Excluir</button>
+</div>
