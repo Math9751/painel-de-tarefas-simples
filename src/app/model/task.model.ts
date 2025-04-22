@@ -1,6 +1,6 @@
 export interface Subtask {
     descricao: string;
-    status: boolean;
+    completo: boolean;
   }
   
   export interface Task {
