@@ -4,7 +4,6 @@ export interface Subtask {
   }
   
   export interface Task {
-    completed: boolean;
     id: number; // Identificador único
     titulo: string;
     descricao: string;
