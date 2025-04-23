@@ -16,4 +16,16 @@ export class TaskItemComponent {
   deleteTask(): void {
     this.taskDeleted.emit(this.task.id);
   }
+
+  createSubtask(): void {
+    const newSubtask = { descricao: '', completo: false };
+    this.task.subtarefas.push(newSubtask);
+  }
+
+  deleteSubtask(index: number): void {
+    this.task.subtarefas.splice(index, 1);
+  }
+  toggleSubtaskCompletion(subtask: { completo: boolean }): void {
+    subtask.completo = !subtask.completo;
+  }
 }

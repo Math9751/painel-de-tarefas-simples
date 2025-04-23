@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { TaskService } from '../services/taskservice.service';
 import { Task } from '../model/task.model';
 import { TaskItemComponent } from "../components/taskitem/taskitem.component";
@@ -8,7 +9,7 @@ import { TaskItemComponent } from "../components/taskitem/taskitem.component";
   templateUrl: './tasklist.component.html',
   styleUrls: ['./tasklist.component.css'],
   standalone: true,
-  imports: [TaskItemComponent]
+  imports: [CommonModule,TaskItemComponent]
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
