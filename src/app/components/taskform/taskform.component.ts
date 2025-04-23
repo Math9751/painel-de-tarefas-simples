@@ -1,17 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../model/task.model'; // Importe o modelo Task
 import { TaskService } from '../../services/taskservice.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-taskform',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './taskform.component.html',
   styleUrls: ['./taskform.component.css']
 })
 export class TaskFormComponent implements OnInit {
   @Input() task: Task | null = null; // Recebe a tarefa para edição (opcional)
   @Output() taskSaved = new EventEmitter<Task>(); // Emite o evento quando a tarefa é salva
-  taskForm!: FormGroup;
+  taskForm: FormGroup;
   statuses: string[] = ['Pendente', 'Concluída'];
 
   constructor(private fb: FormBuilder, private taskService: TaskService) {
