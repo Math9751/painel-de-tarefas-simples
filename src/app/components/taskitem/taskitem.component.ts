@@ -12,20 +12,32 @@ import { CommonModule } from '@angular/common';
 export class TaskItemComponent {
   @Input() task!: Task;
   @Output() taskDeleted = new EventEmitter<number>();
+  @Output() taskStatusChanged = new EventEmitter<Task>();
+  @Output() taskSelected = new EventEmitter<Task>();
+  isAtrasada: boolean = false;
+
+  ngOnInit(): void {
+    this.checkIfAtrasada ();
+    }
 
   deleteTask(): void {
     this.taskDeleted.emit(this.task.id);
   }
 
-  createSubtask(): void {
-    const newSubtask = { descricao: '', completo: false };
-    this.task.subtarefas.push(newSubtask);
+  toggleStatus(): void {
+    this.task.status = this.task.status === 'Pendente' ? 'Concluída' : 'Pendente';
+    this.taskStatusChanged.emit(this.task);
   }
 
-  deleteSubtask(index: number): void {
-    this.task.subtarefas.splice(index, 1);
+  editTask(): void {
+    this.taskSelected.emit(this.task);
   }
-  toggleSubtaskCompletion(subtask: { completo: boolean }): void {
-    subtask.completo = !subtask.completo;
-  }
+
+  checkIfAtrasada(): void {
+    if (this.task.prazo) {
+      const today = new Date();
+      const prazo = new Date(this.task.prazo);
+      this.isAtrasada = prazo < today && this.task.status !== 'Concluída';
+    }
+}
 }

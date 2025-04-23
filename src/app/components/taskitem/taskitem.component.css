@@ -1,0 +1,11 @@
+/* taskitem.component.css */
+.task-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .overdue {
+    background-color: #fdd; /* Cor de fundo para tarefas atrasadas */
+  }
+  

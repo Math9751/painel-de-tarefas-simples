@@ -1,5 +1,5 @@
 <!-- taskitem.component.html -->
-<div class="task-item">
+<div class="task-item" [class.overdue]="isAtrasada" [class.completed]="task.status === 'Concluída'">
   <h3>{{ task.titulo }}</h3>
   <p>{{ task.descricao }}</p>
   <p>Status: {{ task.status }}</p>
@@ -7,5 +7,7 @@
   <div *ngFor="let subtask of task.subtarefas">
     <input type="checkbox" [checked]="subtask.completo"> {{ subtask.descricao }}
   </div>
+  <button (click)="toggleStatus()">{{ task.status === 'Pendente' ? 'Marcar como Concluída' : 'Marcar como Pendente' }}</button>
+  <button (click)="editTask()">Editar</button>
   <button (click)="deleteTask()">Excluir</button>
 </div>
