@@ -7,6 +7,7 @@ import { TaskItemComponent } from "../components/taskitem/taskitem.component";
   selector: 'app-task-list',
   templateUrl: './tasklist.component.html',
   styleUrls: ['./tasklist.component.css'],
+  standalone: true,
   imports: [TaskItemComponent]
 })
 export class TaskListComponent implements OnInit {
